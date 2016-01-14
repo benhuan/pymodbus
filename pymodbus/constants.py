@@ -82,6 +82,7 @@ class Defaults(Singleton):
     Parity        = 'N'
     Bytesize      = 8
     Stopbits      = 1
+    Rtscts        = False
 
 
 class ModbusStatus(Singleton):
