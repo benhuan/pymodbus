@@ -294,6 +294,7 @@ class ModbusSerialClient(BaseModbusClient):
         self.parity   = kwargs.get('parity',   Defaults.Parity)
         self.baudrate = kwargs.get('baudrate', Defaults.Baudrate)
         self.timeout  = kwargs.get('timeout',  Defaults.Timeout)
+        self.rtscts   = kwargs.get('rtscts', Defaults.Rtscts)
 
     @staticmethod
     def __implementation(method):
@@ -318,7 +319,7 @@ class ModbusSerialClient(BaseModbusClient):
         try:
             self.socket = serial.Serial(port=self.port, timeout=self.timeout,
                 bytesize=self.bytesize, stopbits=self.stopbits,
-                baudrate=self.baudrate, parity=self.parity)
+                baudrate=self.baudrate, parity=self.parity, rtscts=self.rtscts)
         except serial.SerialException as msg:
             _logger.error(msg)
             self.close()
